@@ -41,7 +41,24 @@ let cars = [
     },
 ];
 
-// fuelVolume - ავზის მოცულობა
-// fuelComsumption - ხარჯი
+getDistance = (car) =>{
+    let carWillGo = car.fuelVolumeAndConsumption.fuelVolume / car.fuelVolumeAndConsumption.fuelComsumption;
+    return carWillGo;
+} 
 
-// გამოთვალე რომელი მანქანა გაივლის ყველაზე დიდ მანძილს სავსე ავზით
+let MaxDistance = Number.MIN_VALUE;
+let SelectedCar;
+
+cars.forEach(car => {
+    let carDistance = getDistance(car);
+    console.log(`${car.color} ${car.model} - ${carDistance}`)
+    if (carDistance > MaxDistance) {
+        MaxDistance = carDistance;
+        SelectedCar = car;
+    }
+});
+
+console.log("")
+console.log("Fastest Car")
+console.log("============")
+console.log(SelectedCar);
